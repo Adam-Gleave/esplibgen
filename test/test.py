@@ -4,4 +4,4 @@
 import esplibgen
 
 
-esplibgen.main(['python', 'tes4new.json', 'test/'])
+esplibgen.main(['python', 'test/tes4new.json', 'test/'])

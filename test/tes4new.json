@@ -1,0 +1,18 @@
+{
+  "type": "class",
+  "name": "TES4Form",
+  "members":
+  {
+    "public":
+    [
+      ["float", "version"],
+      ["long", "numRecords"],
+      ["unsigned long", "nextObjID"]
+    ],
+    "private":
+    [
+      ["std::string", "author"],
+      ["std::string", "description"]
+    ]
+  }
+}
