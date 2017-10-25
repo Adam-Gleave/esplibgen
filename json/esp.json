@@ -1,0 +1,158 @@
+{
+  "ESP":
+  {
+    "forms":
+    [
+      {
+        "signature": "SUPERFORM",
+        "type": "class",
+        "name": "Record Header",
+        "members":
+        [
+          {
+            "name": "Type Code",
+            "type": "uint32"
+          },
+          {
+            "name": "Data Size",
+            "type": "uint32"
+          },
+          {
+            "name": "Record Flags",
+            "type": "uint32"
+          },
+          {
+            "name": "id",
+            "type": "uint32"
+          },
+          {
+            "name": "revision",
+            "type": "uint32"
+          },
+          {
+            "name": "version",
+            "type": "uint16"
+          },
+          {
+            "name": "unknown",
+            "type": "uint16"
+          }
+        ]
+      },
+      {
+        "signature": "TES4",
+        "name": "File Header",
+        "type": "class",
+        "inherits": "SUPERFORM",
+        "recordFlags": {
+          "0": "ESM",
+          "7": "Localized"
+        },
+        "subrecords": [
+          {
+            "def": {
+              "signature": "HEDR",
+              "name": "Header",
+              "type": "struct",
+              "members": [
+                {
+                  "name": "Version",
+                  "type": "float"
+                },
+                {
+                  "name": "Number of Records",
+                  "type": "uint32"
+                },
+                {
+                  "name": "Next Object ID",
+                  "type": "uint32"
+                }
+              ]
+            },
+            "required": true
+          },
+          {
+            "def": {
+              "signature": "CNAM",
+              "members": [
+                {
+                  "name": "Author",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "def": {
+              "signature": "SNAM",
+              "members": [
+                {
+                  "name": "Description",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "def": {
+              "name": "Master Files",
+              "type": "array",
+              "memberDef": {
+                "name": "Master File",
+                "type": "struct",
+                "members": [
+                  {
+                    "signature": "MAST",
+                    "type": "string",
+                    "name": "Filename"
+                  },
+                  {
+                    "signature": "DATA",
+                    "type": "bytes",
+                    "length": 8,
+                    "name": "Unknown"
+                  }
+                ],
+                "ignoreSignatures": ["ONAM"]
+              }
+            }
+          },
+          {
+            "def": {
+              "members": [
+                {
+                  "signature": "ONAM",
+                  "name": "Overridden Forms",
+                  "type": "array",
+                  "arrayOf": "formID"
+                }
+              ]
+            }
+          },
+          {
+            "def": {
+              "signature": "INTV",
+              "members": [
+                {
+                  "name": "Intv",
+                  "type": "bytes"
+                }
+              ]
+            }
+          },
+          {
+            "def": {
+              "signature": "INCC",
+              "members": [
+                {
+                  "name": "Incc",
+                  "type": "bytes"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
