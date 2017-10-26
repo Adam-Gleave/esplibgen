@@ -6,7 +6,7 @@
       {
         "signature": "SUPERFORM",
         "type": "class",
-        "name": "Record Header",
+        "name": "RecordHeader",
         "members":
         [
           {
@@ -41,9 +41,9 @@
       },
       {
         "signature": "TES4",
-        "name": "File Header",
+        "name": "FileHeader",
         "type": "class",
-        "inherits": "SUPERFORM",
+        "inherits": "RecordHeader",
         "recordFlags": {
           "0": "ESM",
           "7": "Localized"
